@@ -181,6 +181,8 @@ use constant CFGOPT_PROTOCOL_TIMEOUT                                => 'protocol
     push @EXPORT, qw(CFGOPT_PROTOCOL_TIMEOUT);
 use constant CFGOPT_PROCESS_MAX                                     => 'process-max';
     push @EXPORT, qw(CFGOPT_PROCESS_MAX);
+use constant CFGOPT_ENFORCE_USER                                    => 'enforce-user';
+    push @EXPORT, qw(CFGOPT_ENFORCE_USER);
 
 # Commands
 use constant CFGOPT_CMD_SSH                                         => 'cmd-ssh';
@@ -1791,6 +1793,25 @@ my %hConfigDefine =
             &CFGCMD_RESTORE => {},
         }
     },
+
+    &CFGOPT_ENFORCE_USER =>
+        {
+            &CFGDEF_SECTION => CFGDEF_SECTION_GLOBAL,
+            &CFGDEF_TYPE => CFGDEF_TYPE_STRING,
+            &CFGDEF_DEFAULT => '',
+            &CFGDEF_REQUIRED => true,
+            &CFGDEF_COMMAND =>
+                {
+                    &CFGCMD_ARCHIVE_GET => {},
+                    &CFGCMD_ARCHIVE_PUSH => {},
+                    &CFGCMD_BACKUP => {},
+                    &CFGCMD_RESTORE => {},
+                    &CFGCMD_EXPIRE => {},
+                    &CFGCMD_STANZA_CREATE => {},
+                    &CFGCMD_STANZA_DELETE => {},
+                    &CFGCMD_STANZA_UPGRADE => {},
+                }
+        },
 
     # Logging options
     #-------------------------------------------------------------------------------------------------------------------------------

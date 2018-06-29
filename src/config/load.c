@@ -2,6 +2,7 @@
 Configuration Load
 ***********************************************************************************************************************************/
 #include <string.h>
+#include <stdio.h>
 #include <sys/stat.h>
 
 #include "command/command.h"
@@ -57,7 +58,27 @@ void
 cfgLoadUpdateOption()
 {
     FUNCTION_DEBUG_VOID(logLevelTrace);
+    
+    // Check the user running pgbackrest is the one setup in the config file
+    if (cfgOptionTest(cfgOptProtocolTimeout))
+    {
+        // Check if enforce-user is set
+        if (strCmp(cfgOptionStr(cfgOptEnforceUser), strNew("")) != 0)
+        {
+            // Get the username of the user running pgbackrest
+            char username[L_cuserid];
+            cuserid(username);
 
+            // If the enforce-user does not equal the username running pgbackrest, throw error
+            if (strCmp(cfgOptionStr(cfgOptEnforceUser), strNew(username)) != 0)
+            {
+                    THROW_FMT(ConfigError, "config file is setup to only allow pgbackrest to run by user %s, but it is being run by user %s.",
+                    strPtr(cfgOptionStr(cfgOptEnforceUser)),
+                    username);
+            }
+        }
+    }
+    
     // Set default for repo-host-cmd
     if (cfgOptionTest(cfgOptRepoHost) && cfgOptionSource(cfgOptRepoHostCmd) == cfgSourceDefault)
         cfgOptionDefaultSet(cfgOptRepoHostCmd, varNewStr(cfgExe()));

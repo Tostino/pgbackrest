@@ -259,6 +259,18 @@ static const struct option optionList[] =
         .val = PARSE_OPTION_FLAG | cfgOptDelta,
     },
 
+    // enforce-user option
+    // -----------------------------------------------------------------------------------------------------------------------------
+    {
+        .name = "enforce-user",
+        .has_arg = required_argument,
+        .val = PARSE_OPTION_FLAG | cfgOptEnforceUser,
+    },
+    {
+        .name = "reset-enforce-user",
+        .val = PARSE_OPTION_FLAG | PARSE_RESET_FLAG | cfgOptEnforceUser,
+    },
+
     // force option
     // -----------------------------------------------------------------------------------------------------------------------------
     {

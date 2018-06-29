@@ -14,7 +14,7 @@ Command constants
 /***********************************************************************************************************************************
 Option constants
 ***********************************************************************************************************************************/
-#define CFG_OPTION_TOTAL                                            161
+#define CFG_OPTION_TOTAL                                            162
 
 /***********************************************************************************************************************************
 Command enum
@@ -65,6 +65,7 @@ typedef enum
     cfgOptDbInclude,
     cfgOptDbTimeout,
     cfgOptDelta,
+    cfgOptEnforceUser,
     cfgOptForce,
     cfgOptHostId,
     cfgOptLinkAll,
@@ -81,16 +82,16 @@ typedef enum
     cfgOptOutput,
     cfgOptPerlOption,
     cfgOptPgHost,
-    cfgOptPgHostCmd =                                               43,
-    cfgOptPgHostConfig =                                            51,
-    cfgOptPgHostConfigIncludePath =                                 59,
-    cfgOptPgHostConfigPath =                                        67,
-    cfgOptPgHostPort =                                              75,
-    cfgOptPgHostUser =                                              83,
-    cfgOptPgPath =                                                  91,
-    cfgOptPgPort =                                                  99,
-    cfgOptPgSocketPath =                                            107,
-    cfgOptProcess =                                                 115,
+    cfgOptPgHostCmd =                                               44,
+    cfgOptPgHostConfig =                                            52,
+    cfgOptPgHostConfigIncludePath =                                 60,
+    cfgOptPgHostConfigPath =                                        68,
+    cfgOptPgHostPort =                                              76,
+    cfgOptPgHostUser =                                              84,
+    cfgOptPgPath =                                                  92,
+    cfgOptPgPort =                                                  100,
+    cfgOptPgSocketPath =                                            108,
+    cfgOptProcess =                                                 116,
     cfgOptProcessMax,
     cfgOptProtocolTimeout,
     cfgOptRecoveryOption,

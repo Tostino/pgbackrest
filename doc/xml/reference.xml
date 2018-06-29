@@ -199,6 +199,15 @@
                         <example>4</example>
                     </config-key>
 
+                    <!-- CONFIG - GENERAL SECTION - ENFORCE-USER -->
+                    <config-key id="enforce-user" name="Enforce User">
+                        <summary>Enforce the user which is able to run the pgbackrest process.</summary>
+
+                        <text>Only allow pgbackrest to run as the specified user. If not specified, there is nothing to enforce and pgbackrest will run.</text>
+
+                        <example>pgbackrest</example>
+                    </config-key>
+
                     <!-- CONFIG - GENERAL SECTION - PROTOCOL-TIMEOUT KEY -->
                     <config-key id="protocol-timeout" name="Protocol Timeout">
                         <summary>Protocol timeout.</summary>
